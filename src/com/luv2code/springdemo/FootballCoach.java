@@ -1,17 +1,17 @@
 package com.luv2code.springdemo;
 
-public class TrackCoach implements Coach {
+public class FootballCoach implements Coach {
 
 	@Override
 	public String getDailyWorkout() {
 		// TODO Auto-generated method stub
-		return "Run boi run";
+		return "Run 30 mins and pass some balls";
 	}
 
 	@Override
 	public String getSportName() {
 		// TODO Auto-generated method stub
-		return "I'm running track ";
+		return "Football";
 	}
 
 }
