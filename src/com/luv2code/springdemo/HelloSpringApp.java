@@ -7,12 +7,12 @@ public class HelloSpringApp {
 		//load the spring configuration file
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
-		
+	
 		//retrieve the beans from container
 		Coach theCoach = context.getBean("myCoach",Coach.class);
 		
 		//call method on beans
-		System.out.print(theCoach.getDailyWorkout() + "   " + theCoach.getSportName());
+		System.out.print(theCoach.getDailyWorkout() + "   " + theCoach.getDailyFortune() );
 		//	close the context
 		context.close();
 	}
