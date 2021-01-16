@@ -9,7 +9,7 @@ public class HelloSpringApp {
 		
 	
 		//retrieve the beans from container
-		Coach theCoach = context.getBean("myCoach",Coach.class);
+		TrackCoach theCoach = context.getBean("myCoach",TrackCoach.class);
 		
 		//call method on beans
 		System.out.print(theCoach.getDailyWorkout() + "   " + theCoach.getDailyFortune() );

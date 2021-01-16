@@ -3,7 +3,29 @@ package com.luv2code.springdemo;
 public class CricketCoach implements Coach {
 	
 	private FortuneService fs;
+	private String emailAdress;
+	private String team;
 	
+	
+
+	public String getEmailAdress() {
+		return emailAdress;
+	}
+
+	public void setEmailAdress(String emailAdress) {
+		System.out.println("CricketCoach: inside setter method setEmail");
+		this.emailAdress = emailAdress;
+	}
+
+	public String getTeam() {
+		return team;
+	}
+
+	public void setTeam(String team) {
+		System.out.println("CricketCoach: inside setter method setTeam");
+		this.team = team;
+	}
+
 	//setter method
 	public void setFortuneService(FortuneService fs) {
 		System.out.println("CricketCoach: inside setter method setFs");

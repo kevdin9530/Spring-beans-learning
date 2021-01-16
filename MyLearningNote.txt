@@ -1,0 +1,58 @@
+Author: Kevin Hoang Dinh
+Learning course: Spring & Hibernate for Beginners (includes Spring Boot) by Chad Darby on Udemy
+Hey, this file is my note for learning basic things about Spring. It's mostly for my personal use so it can be confusing for other people. Hope you find it's useful.  
+
+
+
+- Core container: Beans (factory for creating/managing beans), SpEL (Spring Expression Language), Core and Context
+- Infrastructur: AOP (Aspect-Oriented-Programming),  add function to an object decleratively (like logging, security, transation,....) apply this through a config file or annotation.
+- Data Access Layer: for communicating with database(relation db or NoSQL db). Spring provide helper class for JDBC,JMS which reduce 50% of the code. ORM(Object to Relational Mapping) for intergration with Hibernate and JPA. 
+- Web Layer: All web related class, home of spring MVC framework. Build WebApp through Spring Core. 
+- Test Layer: Unit, Intergration and Mock. Support TTD (Test-Drive-Development), Mock objects and out-of-container testing.
+
+Spring project is a spring modules built-on top of the core spring framework a.k.a choose project and use only thing that u need
+
+
+Set up: Install Eclipse EE IDE for Web developer, install Apache Cat and create a server in eclipse
+Get JAR file from Spring, right click ur java project property->library->classpath and add jar file
+
+
+////////////////////////////////////////Spring container/////////////////////////////////////////////////////////
+Spring can be an object factory and depend on the configuration file/annotation. In this case is Spring Container.
+Spring container main functions: 
+- Create and manage object (inversion of control)
+- Inject objecet's dependencies (Dependency injection)
+configuring Spring container has 3 ways: XML config file (legacy but still used by many), java annotation/java source code(modern)
+
+Spring container development process:
+- Configurine ur spring beans
+- create spring container  (a.k.a ApplicationContext and has specialized implementation like ClassPathXML,AnnotationConfig,GenericWebApplication and so on)
+- get beans from container
+
+Practice in package com.luv2code.springdemo
+
+//////////////////////////////////Dependency Injecetion//////////////////////////////////////
+its mean that you outsource the construction and injection of your object to an external entity
+"dependency" can just be helper object that is needed to perform operation
+continue with the practice in package com.luv2code.springdemo 
+Coach will has a new function dailyfortunes with a new helper FortuneService and this is a dependency
+Most 2 common injections: contrustor and setter
+
+Development procress of construction injection
+- define dependecy interface n classes
+- create a construction in ur class for injection 
+- config dependency injection in spring config file: 
+To config dependency injection, in ur bean write <constructor-arg ref="nameOfTheClassDependentOn"/>
+
+Setter injection:
+- creater setter method for injection
+- configure the dependency injection in Spring config file
+For setter injection, insert in ur bean <property name = "GiveName" ref="TheBeansIdOf_Class_you_inject"/>
+!!!!OBS!!!! the name you give for your setter in the class should have same name as the config file
+example: ur java file has setter method name setDailyWorkOut() then your config setter name is "DailyWorkOut"
+
+
+Injecting literal value in spring object - development process:
+-Create setter method in class for injection
+-Config the injection in Spring config file
+To inject literal value, insert in ur bean <property name = "GiveName" value="the_value_of_the_class"/>

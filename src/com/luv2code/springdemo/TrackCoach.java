@@ -2,11 +2,21 @@ package com.luv2code.springdemo;
 
 public class TrackCoach implements Coach {
 	//define dependecy
-	private FortuneService fs;
+	private FortuneService fortuneService;
 	
-	public TrackCoach(FortuneService fs) {
+	
+	
+	public FortuneService getFortuneService() {
+		return fortuneService;
+	}
+
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+
+	public TrackCoach(FortuneService fortuneService) {
 		super();
-		this.fs = fs;
+		this.fortuneService = fortuneService;
 	}
 
 	@Override
@@ -24,7 +34,7 @@ public class TrackCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		// TODO Auto-generated method stub
-		return "Just DO IT "+ fs.getFortune();
+		return "Just DO IT "+ fortuneService.getFortune();
 	}
 
 }

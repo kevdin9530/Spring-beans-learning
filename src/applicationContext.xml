@@ -9,15 +9,29 @@
 
     <!-- Define your beans here -->
     <bean id="myCoach" 
-    	class="com.luv2code.springdemo.CricketCoach">
-    	
+    	class="com.luv2code.springdemo.TrackCoach">
+    	<!--  -->
+    	<constructor-arg ref="myFortunesv"/>
+    	<!--setter injection --> 
     	<property name ="fortuneService" ref="myFortunesv"/>
-    	<!-- ref to another beans id -->
+    	
     </bean>
     <bean id="myFortunesv" 
     	class="com.luv2code.springdemo.SadFortuneService">
     </bean>
     
+    <!-- another beans id for Setter injection and Injecting literal value -->
+    <bean id ="newCricketCoach"
+    	class="com.luv2code.springdemo.CricketCoach">
+    	<!-- set up injection -->
+    	<property name = "fortuneService" ref="myFortunesv"/>
+    	
+    	<!-- injection literal value -->
+    	<property name = "emailAdress" value="kevdin9530@gmail.com"/>
+    	<property name = "Team" value ="Team Halland"/>
+    	</bean>
+    	
+   	<!-- Beans to show more extra log in console -->
      <bean id="myLoggerConfig" class="com.luv2code.springdemo.MyLoggerConfig" init-method="initLogger">
     	<property name="rootLoggerLevel" value="FINE" />
     	<property name="printedLoggerLevel" value="FINE"/>
