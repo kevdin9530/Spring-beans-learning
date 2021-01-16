@@ -56,3 +56,14 @@ Injecting literal value in spring object - development process:
 -Create setter method in class for injection
 -Config the injection in Spring config file
 To inject literal value, insert in ur bean <property name = "GiveName" value="the_value_of_the_class"/>
+
+!!Note to my java file: we don't use Coach interface because we only create certain variable the value injection only belong to the CricketCoach. 
+
+Injecting value from a property file - development process:
+- create property file
+- load property file in spring config file
+- ref value from property file
+property file should be has end file as .properties
+to load property file in spring config file, write  <context:property-placeholder location="classpath:filename.properties"/>
+
+
