@@ -9,8 +9,10 @@
 
     <!-- Define your beans here -->
     <bean id="myCoach" 
-    	class="com.luv2code.springdemo.TrackCoach">
-    	<constructor-arg ref="myFortunesv"></constructor-arg>
+    	class="com.luv2code.springdemo.CricketCoach">
+    	
+    	<property name ="fortuneService" ref="myFortunesv"/>
+    	<!-- ref to another beans id -->
     </bean>
     <bean id="myFortunesv" 
     	class="com.luv2code.springdemo.SadFortuneService">
