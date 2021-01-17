@@ -67,3 +67,56 @@ property file should be has end file as .properties
 to load property file in spring config file, write  <context:property-placeholder location="classpath:filename.properties"/>
 
 
+///////////////////////Beans Scope/////////////////////////////////////////
+Scope (refer to lifecycle of a bean) allows you to know:
+- How long does the bean live
+- How many instance are created
+- How is the bean shared in Spring enviroment
+Default scope of a bean is singleton:
+- Singleton means that it only creates one instance of the bean
+- it is cached in in memory
+- All request of that bean will return a SHARED ref to the same bean
+
+Addtional spring bean scope: 
+- singleton: create a single shared instance of bean
+- prototype: create new beans instance for each container request
+- request: scoped to an HTTPS web request. Only used for web app (like session checking shopping cart)
+- session: scoped to an HTTP web session. Only used for web app
+- global-session: scoped to an global HTTP web session. Only used for web app. 
+Depend on situation u want to create new instance every request you need to set
+scope "prototype" inside the bean. 
+
+The life cycle of a bean:
+When a container started -> the bean instantiated -> then dependency is injected->
+-> internal spring processing occurs with the bean factory -> option to add your own custom 
+initialization method -> The bean is now ready to use and at certain point the container shut down
+a.k.a when ur application shut down like context.close() or calling a custom destroy method
+before the bean lifecycle end. 
+
+You can add custom code During bean initialization/destruction.
+- Calling custom business logic method
+- Setting up handle for resources (database, sockets, file etc)
+Basically, in a bean life cycle, spring allow you to call some of custom code which we
+usually refer as Hook, to execute.To do this just insert 
+init-method = "method_name" in ur XML config. 
+destroy-method = "method_name"
+The method can have any access modifier (private, protected, public)
+
+Return type can be any but the value can't be captured. 
+This is quite return type void is commonly used.
+Method name can be any
+Method should be no-arg. 
+ 
+
+Development Process: 
+- Define init/destroy method
+- Config method name in spring config file
+
+!!!!OBS!!!!!! Beware of prototype scope bean. Spring wont call the destroy method
+on prototype scope bean. It is possible to do custom destroy method on prototype bean 
+but it requires custom coding.
+
+
+
+
+ 
