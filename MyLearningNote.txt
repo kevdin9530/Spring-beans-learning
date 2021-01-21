@@ -117,6 +117,65 @@ on prototype scope bean. It is possible to do custom destroy method on prototype
 but it requires custom coding.
 
 
+///////////////////////////Spring config with java annotations/////////////////
+Java Annotations is special labels/marker added to java classes. Give you 
+meta-data about the class. Java anno can process at compile time or 
+run-time for special processing.
 
+ex: @Override which tell the compiler we are overriding a method.
+and during compilation time, compiler will check/verify the override.
+if the override is not compatible it will give compilation error.
+
+XML config can be very verbose for large object 
+ex: if you have a spring object with 100 beans, it will take forever to code them.
+
+Instead you can just config spring beans with annontation instead and 
+minimize the XML config. 
+
+How spring work with annotation,
+basically, when you add annotation to a class, spring will scan java class
+for the annotation and automatically register that beans in the spring container.
+
+Using annotation with Spring - Development process:
+- Enable component scanning in spring config file
+- Add the @Component Annontation in java class
+- Retrieve the beans from the spring container.
+
+in spring config file, add <context:component-scan
+		base-package="package_path" />
+after that, go in the java class you create, you can add
+@Component("bean_id") 
+by doing this it allow the spring to read java classes as component and add them as beans
+in the spring container.
+
+The default bean-id of a component when created is the class name with first letter lower-case
+ex: class name "TennisCoach" then the bean-id is "tennisCoach"
+
+Spring dependecy injection with Annotation and autowiring:
+Autowiring mean that spring can automatically wire up objects together
+Spring will look for a class that matches the property (matches by type: either class or interface)
+then spring find the match, it will inject it automically. 
+
+Ex of Autowiring behind the scene in Spring: 
+- Inject FortuneService into Coach implementation
+- Spring will scan @Component
+- Spring will check any one implements FortuneService interface
+- If so, let's inject them.    
+
+Autowiring inject types: Constructor-,Setter- and Field Injection
+
+Annotations Constructor Injection - Development Process:
+- Define dependency interface n class
+- Create a constructor in your class for injection
+- Config the dependency injection with @Autowired Annotation
+
+ Spring setter injection with Annotation and autowiring:
+ In this case, we inject dependencies by calling a setter method on ur class.
+   
+ Setter injection - development process:
+ - Create setter method in ur class for injection
+ - config dependency injection with @Autowired Annotation
+ 
+ 
 
  

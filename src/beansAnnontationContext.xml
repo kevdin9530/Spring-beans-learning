@@ -6,16 +6,30 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	
+	<!-- add component scan in spring -->
+	<context:component-scan
+		base-package="com.luv2code.springdemoannontations" />
 
-	<bean id="mySillyCoach">
-		<context:component-scan
-			base-package="com.luv2code.springdemo" />
-	</bean>
+
+
+	<!-- Beans to show more extra log in console -->
 	<bean id="myLoggerConfig"
 		class="com.luv2code.springdemo.MyLoggerConfig"
 		init-method="initLogger">
 		<property name="rootLoggerLevel" value="FINE" />
 		<property name="printedLoggerLevel" value="FINE" />
+	</bean>
+
+	<!-- create new beans for practice -->
+	<bean id="practiceFortuneService"
+		class="com.luv2code.springdemo.RandomFortuneService">
+	</bean>
+
+	<bean id="practiceCoach"
+		class="com.luv2code.springdemo.BaseballCoach">
+		<constructor-arg ref="practiceFortuneService"></constructor-arg>
 	</bean>
 </beans>
 
