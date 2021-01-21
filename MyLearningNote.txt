@@ -175,7 +175,31 @@ Annotations Constructor Injection - Development Process:
  Setter injection - development process:
  - Create setter method in ur class for injection
  - config dependency injection with @Autowired Annotation
+ simply add @Autowired on a setter method
+ You can also add dependecy by using any method as long as u add @Autowired
  
- 
+ Field Injection with Annotation and Autowired
+ In this case, u can inject dependencies by setting field value on ur class directly, even private field
+ The process happen behind the scene a.k.a Java Reflection
+ Development Process - Field Injection:
+ - configure dependency injection with autowired annotation(apply directly to the field n 
+ no need for setter method)
+ To do this, just set @Autowired on the field that u want to inject dependecy
 
+ When to use which injection:
+ - U need to choose a style and consistent with ur project
  
+ When using autowiring,
+ what will happen if there are many implementation? which one will the spring pick?
+ so to do this u can set up a Annotation @Qualifier to be specific which bean-id
+ u can add @Qualifier to any type of injection.
+ However, using Qualifier in constructor can be tricky becuz u have to give the Annotation
+ inside the constructor arg field
+ ex: public someCoach(@Qualifier("bean-id" Interface_name name)
+ 
+ !!OBS!!!! about default bean-id. If the class name has 2 uppercase in the beginning
+ the default bean-id wont be converted to lower case
+ example class name "RESTsomething" then the default bean-id is "RESTsomething", not"rESTsomething"
+ 
+ To read and use data properties file. Add read component in spring config file
+ later use the data by using @Value("${data_name}")

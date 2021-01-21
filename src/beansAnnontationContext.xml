@@ -12,7 +12,7 @@
 	<context:component-scan
 		base-package="com.luv2code.springdemoannontations" />
 
-
+	<context:property-placeholder location = "classpath:sport.properties"/>
 
 	<!-- Beans to show more extra log in console -->
 	<bean id="myLoggerConfig"
