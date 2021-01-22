@@ -23,14 +23,7 @@
 	</bean>
 
 	<!-- create new beans for practice -->
-	<bean id="practiceFortuneService"
-		class="com.luv2code.springdemo.RandomFortuneService">
-	</bean>
 
-	<bean id="practiceCoach"
-		class="com.luv2code.springdemo.BaseballCoach">
-		<constructor-arg ref="practiceFortuneService"></constructor-arg>
-	</bean>
 </beans>
 
 

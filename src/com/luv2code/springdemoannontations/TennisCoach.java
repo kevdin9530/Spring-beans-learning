@@ -1,16 +1,29 @@
 package com.luv2code.springdemoannontations;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component//inside "" is the bean id
 //if u dont write bean-id, the default bean-id will be class name with first letter lower case
-
-public class TennisCoach implements Coach {
+@Scope("prototype")
+public class TennisCoach implements Coach, DisposableBean {
 	
+	@PostConstruct
+	public void init() {
+		System.out.println("Inside the method during beans initialization");
+	}
 	
+	@Override
+	public void destroy() {
+		System.out.println("Inside the method during bean destruction");
+	}
 	
 	
 	@Autowired

@@ -203,3 +203,50 @@ Annotations Constructor Injection - Development Process:
  
  To read and use data properties file. Add read component in spring config file
  later use the data by using @Value("${data_name}")
+ 
+ Adding beans scope with java Annotation by using @Scope
+ default scope will simply singleton 
+ To do this just add @Scope("scope_type") before the class 
+ 
+ Beans lifecycle method with Java Annotation - Development Process:
+ - define your method for init and destroy
+ - Add Annotation @PostConstruct @PreDestroy
+ 
+  !!!!!OBS!!!!! @PreDestroy method doesnt work with prototype scope. So to do this.
+  you need 
+  - Implement a custombeanprocessor
+  - to use interface DisposableBean and implement destroy() method 
+  
+  ///////////////////Using java config class instead of XML///////////////////////
+  This time we are trying another way to configure  a container without using xml file.
+  Development Process is:
+  - Create java class and add annotation @Configuration
+  - Add component scanning support @ComponentScan (optional)
+  - Read Spring Java config class
+  - Retrieve bean from the container
+  
+  To use config class, use the class AnnotationConfigApplicationContext
+  to get the context of that config class.
+  
+  Now we define the bean directly in java config code without adding component on every class..
+  Development Process:
+  - Define method to expose the bean
+  - Inject bean dependencies
+  - Read Spring java config class
+  - Retrieve Bean from Spring container.
+  
+  The case to use @Bean instead of @Component is when using an outsider class that 
+  doesnt belong to the Spring library. By define with @Bean you can use outside
+  class without a problem. @Bean annotation is like a wrapper/adapter for third-party classes.
+  
+  This time we try to inject value from a property files through java code
+  Development Process:
+  - create property files
+  - load property file in spring config
+  - references the value in the file
+  To load property file, simply add @PropertySource("classpath:name.properties")
+  in your config class
+  and to use the value, simply use @Value annotation same as above
+  
+  
+  
