@@ -248,5 +248,101 @@ Annotations Constructor Injection - Development Process:
   in your config class
   and to use the value, simply use @Value annotation same as above
   
+  /////////////////////////////Spring MVC///////////////////////
+  
+  MVC stand for model view controller. 
+  Spring MVC is a framework for building web app in java
+  and the framework is based on mvc design pattern.
+  and it leverages features of the core spring framework (IoC,DI)
+  
+ 
+ A simple model of MVC:
+  	Web		->   front controller  -> controller 
+  										|
+  										v 
+  Browser		<------------			view template
+  
+  basically you get a request from a web browser, it will encounter the front controller
+  this person will delegate the request off to a controller code. 
+  Controller code is the code that you create that contains ur business logic
+  
+  Benefits of spring mvc:
+  - Its the benefit of building web app UIs in java
+  - Leverages a set of reuseable UI component
+  - Help manage app state of web request
+  - Process form data: validation, conversion
+  - Flexible config for view layer.
+  
+ For more ref to spring mvc
+ Go to docs: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html
+ 
+ Components of Spring MVC:
+ - A set of web pages to layout UI component
+ - A collection of spring beans (controller, services...)
+ - Spring config (xml, annotation or java)
+Spring MVC work behind the scene:
+1. Front controller know as a DispatcherServlet:
+- Part of Spring framework
+- Already developed by Spring Dev Team
+so as a developer u only need to create 
+- Model Object: contains data
+- View template: ur JSP page, a view page to render data
+- Controller Classes: your business/processing logic, 
+2. Controller:
+- Done by developer
+- Contains ur business/processing logic: handle request, store/retrieve data(db,webservice...), place data in model
+- Send to approriate view template
+
+3. Model:
+- contains ur data
+- store/retrieve data via backend systems(db,webservice.../use spring bean maybe)
+- Place data in the model (data can be any java object/collection)
+4. View template:
+Most common view template is JSP (Java server page) and JSTL (JSP standard Tag Library).
+- Spring MVC is flexible, has many view template (thymeleaf, groovy, velocity, freemaker...)
+- Developer will create a page to display data.
+Basically its a jsp page that will provide data to the user
+
+For more detail about the template. 
+Go to: https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-view
+
+The hardest part of doing Spring MVC is getting the right configuration
+Process:
+- Add the following in the config to file WEB-INF/web.xml 
+1. configure spring MVC dispatcher servlet
+2. set url mapping to spring mvc dispatcher servlet
+Add the following to WEB-INF/Spring-mvc-demo-servlet.xml
+3. Add support for spring component scanning
+4. Add support for conversion, formatting and validation
+5. Config spring mvc resolver
+
+In step 1: 
+u want to add <servlet> in ur config xml file and give them a name/class and init parameter to locate spring context
+name: <servlet-name>
+class: <servlet-class> path of class
+init: <init-param> (inside init has name <param-name> n value <param-value> which is ur context path)
+in Step 2:
+basically we need to set up the url
+<servlet-mapping>: has name <servlet-name> and <url-pattern> depend on the url pattern
+the request will be processed according to the servlet name. 
+In step 3:
+- simply add <beans> and inside <context:component-scan base-package = "package name">
+In step 4:
+- simply add <mvc:annotation-drive> inside <beans>. 
+In step 5:
+- Add a single <bean> and config the bean class. Add <property name ="prefix/suffix" value = "file location"
+when you add the prefix / suffix 
+it will let u know where to find the file and what type of file it is
+the prefix is the path location while suffix is what type of file.
+
+The learning will continue in another github since it will be another project
+Continuation: https://github.com/kevdin9530/SpringMVCLearn
+
+ 
+
+ 
+  	
+  	
+  
   
   
